@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+/* ✔ ANA SAYFA (GET / HATASINI ÇÖZER) */
+app.get("/", (req, res) => {
+  res.send("AI Chat Server çalışıyor");
+});
+
+/* ✔ CHAT ENDPOINT */
 app.post("/chat", async (req, res) => {
   const msg = req.body.message;
 
@@ -37,5 +43,6 @@ app.post("/chat", async (req, res) => {
   }
 });
 
+/* ✔ PORT */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server çalışıyor"));
