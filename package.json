@@ -1,1 +1,24 @@
-
+{
+  "name": "api-server",
+  "version": "1.0.0",
+  "description": "Simple API server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "api",
+    "server",
+    "nodejs"
+  ],
+  "author": "your-name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
