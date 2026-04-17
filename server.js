@@ -9,7 +9,7 @@ app.use(express.json());
 
 /* ✔ ANA SAYFA (GET / HATASINI ÇÖZER) */
 app.get("/", (req, res) => {
-  res.send("AI Chat Server çalışıyor");
+  res.send("Aİ SENİNLE OYNAMAYA HAZIR");
 });
 
 /* ✔ CHAT ENDPOINT */
