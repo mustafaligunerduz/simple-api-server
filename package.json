@@ -1,24 +1,14 @@
 {
-  "name": "api-server",
+  "name": "simple-api-server",
   "version": "1.0.0",
-  "description": "Simple API server",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js"
   },
-  "keywords": [
-    "api",
-    "server",
-    "nodejs"
-  ],
-  "author": "your-name",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.19.2",
-    "dotenv": "^16.4.5"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.4.0"
   }
 }
