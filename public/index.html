@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>AI Chat</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f0f;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 420px;
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+#chat {
+  height: 500px;
+  overflow-y: auto;
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.msg {
+  margin: 6px 0;
+}
+
+.user {
+  color: #4da3ff;
+}
+
+.ai {
+  color: #00ff9d;
+}
+
+.inputBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+button {
+  margin-left: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #4da3ff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2f8cff;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>AI Chat</h2>
+
+<div id="chat"></div>
+
+<div class="inputBox">
+  <input id="msg" placeholder="Mesaj yaz..." />
+  <button onclick="send()">Gönder</button>
+</div>
+
+</div>
+
+<script>
+
+function add(text, cls){
+  document.getElementById("chat").innerHTML +=
+    `<div class="msg ${cls}">${text}</div>`;
+}
+
+async function send(){
+  const input = document.getElementById("msg");
+  const text = input.value;
+
+  if(!text) return;
+
+  add("Sen: " + text, "user");
+  input.value = "";
+
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    });
+
+    const data = await res.json();
+    add("AI: " + data.reply, "ai");
+
+  } catch (e) {
+    add("AI: server yok / hata", "ai");
+  }
+}
+
+</script>
+
+</body>
+</html>
