@@ -106,7 +106,7 @@ POST /api/users
 
 ```json
 {
-  "name": "Ali"
+  "name": "?"
 }
 ```
 
